@@ -1,0 +1,166 @@
+
+<div *ngIf="obs$ | async as obs; else loading" >
+    <div *ngIf="!parent">
+        <h2 class="notiene">Usted no tiene registro medico con esta Clínica.</h2>
+    </div>
+    <ng-template #loading>Loading...</ng-template>
+    <section class="container animated fadeInUp " style=" padding-top: 30px; padding-bottom: 50px;" *ngIf="parent">
+        
+        <div class="perfil" >
+                    
+            
+            <div class="local_categoria_item" style="height: 220px;">
+                <div class="logo_local">
+                    <!-- <img [src]="parent.avatar" alt=""> -->
+                    <img src="{{imagenSerUrl}}{{user.avatar}}" alt="">
+                </div>
+                <div class="contenido" style="height: 130px;">
+                    <div class="info_local">
+                        <h3>Name: {{parent.name}}</h3>
+                        <div class="infcita">
+                            <p class="esp"><b>Patient Id</b><br>
+                                {{parent.patient_id}}</p>
+                            <p class="fech"><b>Phone</b><br>
+                                {{parent.phone}}</p>
+                            <p class="monto">
+                                <b>Nacimiento:</b> <br>
+                                {{parent.birth_date|date}}
+                            </p>
+                            <p class="pagado">
+                                <b>Email:</b> <br>
+                                {{parent.email}}
+                            </p>
+                            
+                        </div>
+                    </div>
+                    <div class="calificacion">
+                        <span *ngIf="parent.gender === 1"> <i class="fa fa-user"></i>&nbsp;Male</span>
+                                <span *ngIf="parent.gender === 2"> <i class="fa fa-user"></i>&nbsp;Female</span>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="card" style="margin-top: 15px;">
+                <form autocomplete="off">
+                    <div class="row">
+                        
+                        <div class="col-12 col-md-6 col-xl-4">
+                            <div class="form-group local-forms">
+                                <label>First Name<span class="login-danger">*</span></label>
+                                <input class="form-control" name="name" [(ngModel)]="name" type="text">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-4">
+                            <div class="form-group local-forms">
+                                <label>Last Name <span class="login-danger">*</span></label>
+                                <input class="form-control" name="surname" [(ngModel)]="surname" type="text">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-4">
+                            <div class="form-group local-forms">
+                                <label>Phone <span class="login-danger">*</span></label>
+                                <input class="form-control" name="phone" [(ngModel)]="phone" type="text">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 col-xl-6">
+                            <div class="form-group local-forms">
+                                <label>Email <span class="login-danger">*</span></label>
+                                <input class="form-control" name="email" readonly [(ngModel)]="email" type="email">
+                                <div *ngIf="emailExists">
+                                    <small class="text-danger">Email already exists</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 col-md-6 col-xl-6">
+                            <div class="form-group local-forms">
+                                <label>Birth day<span class="login-danger">*</span></label>
+                                <input  type="date" class="form-control datetimepicker" name="birth_date" [(ngModel)]="birth_date"   >
+                                <!-- <input class="form-control datetimepicker" name="birth_date"
+                                    [(ngModel)]="birth_date" type="text" matInput [matDatepicker]="picker">
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle> -->
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4 col-xl-4">
+                            <div class="form-group select-gender">
+                                <label class="gen-label">Gender<span class="login-danger">*</span></label>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" name="gender" value="1" [(ngModel)]="gender"
+                                            class="form-check-input">Male
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <label class="form-check-label">
+                                        <input type="radio" name="gender" value="2" [(ngModel)]="gender"
+                                            class="form-check-input">Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 col-sm-12">
+                            <div class="form-group local-forms">
+                                <label>Address <span class="login-danger">*</span></label>
+                                <textarea class="form-control" name="address" [(ngModel)]="address" rows="3"
+                                    cols="30"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-xl-6">
+                            <div class="form-group local-top-form">
+                                <label class="local-top">Picture (Max Size: 2Mb, jpg,png)<span
+                                        class="login-danger">*</span></label>
+                                <div class="settings-btn upload-files-avator">
+                                    <input type="file" accept="image/*" name="image" id="file"
+                                        (change)="loadFile($event)" class="hide-input">
+                                    <label for="file" class="upload">Choose File</label>
+                                </div>
+                            </div>
+                            <div *ngIf="FILE_AVATAR">
+                                <img [src]="IMAGE_PREVISUALIZA" style="width: 250px;" alt="">
+                            </div>
+                        </div>
+                        <div class="col-12" *ngIf="valid_form">
+                            <div class="form-group row" *ngIf="text_success">
+                                <div class="col-md-12">
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>Success!</strong> The user has been created sucessfully.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close">
+                                            <span aria-hidden="true"> </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row" *ngIf="text_validation">
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                        <strong>!</strong> {{text_validation}}.
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                            aria-label="Close">
+                                            <span aria-hidden="true"> </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="doctor-submit text-end">
+                                <button type="button" class="btn btn-primary submit-form me-2"
+                                    (click)="save()">Save</button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            
+        </div>
+    
+    </section>
+
+</div>

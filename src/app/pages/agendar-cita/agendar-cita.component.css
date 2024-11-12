@@ -1,0 +1,17 @@
+.headtabla,
+.datosdoctor{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.headtabla h4{
+    font-size: 18px;
+    font-family: var(--font-bold);
+}
+
+.listadoctors{
+    height: 50vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
