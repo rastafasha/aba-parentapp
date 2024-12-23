@@ -39,13 +39,12 @@
                 
                 <div class="perfil-home">
                     <div class="fotoPerfil">
-                        <img src="{{imagenSerUrl}}{{user.avatar}}" alt="">
+                        <div class="logo-standar"></div>
                     </div>
                     <div class="datospaciente">
                         <h5>Hi!,</h5>
-                        <h3 style="font-size: 16px;">{{parent?.name}}</h3>
-                        <p><b>Patient Id</b> {{parent?.patient_id}}</p>
-                        <p><b>Location:</b> {{parent?.location_id}}</p>
+                        <h3 style="font-size: 16px;">{{name}}</h3>
+                        <p><b>email:</b> {{parent?.email}}</p>
                     </div>
                 </div>
             </div>
@@ -60,32 +59,34 @@
                     <!-- <img src="./assets/images/food/medical.png" alt=""> -->
                     <div *ngIf="patient">
                         <div class="fotoPatient">
-                            <img src="{{patient.avatar}}" alt="">
-                            <p style="margin-bottom: 0 !important;"><b style="color:#fff; ">Name:</b> {{patient?.full_name}}</p>
-                                <p style="margin-bottom: 0 !important;"><b style="color:#fff; ">PatientId:</b> {{patient?.patient_id}}</p>
+                            <!-- <img src="{{patient.avatar}}" alt=""> -->
+                            <div class="texto-inicial">
+                                <p style="margin-bottom: 0 !important;"><b style="color:#fff; ">Name:</b> {{patient?.full_name}}</p>
+                                <p style="margin-bottom: 0 !important;"><b style="color:#fff; ">PatientId:</b> {{patient?.patient_identifier}}</p>
                                 <p style="margin-bottom: 0 !important;"><b style="color:#fff; ">Location:</b> {{patient?.locals?.title}}</p>
+                            </div>
                         </div>
                         <div class="datosmedicinas-oculto">
                             <p ><b style="color:#fff; ">Name:</b> {{patient?.full_name}}</p>
-                            <p ><b style="color:#fff; ">PatientId:</b> {{patient?.patient_id}}</p>
+                            <p ><b style="color:#fff; ">PatientId:</b> {{patient?.patient_identifier}}</p>
                             <p ><b style="color:#fff; ">Location:</b> {{patient?.locals?.title}}</p>
                                 <p><b style="color:#fff">Insurance: </b>{{patient?.insurances?.insurer_name}}</p>
-                                <p><b style="color:#fff">Birth Date:</b> {{patient?.birth_date|date}}</p>
-                                <p><b style="color:#fff">Elegibility Date:</b> {{patient?.elegibility_date|date}}</p>
+                                <p><b style="color:#fff">Birth Date:</b> {{patient?.birth_date|date:'shortdate'}}</p>
+                                <p><b style="color:#fff">Elegibility Date:</b> {{patient?.elegibility_date|date:'shortdate'}}</p>
                                 <p><b style="color:#fff">Gender: </b>
                                     <span *ngIf="patient?.gender === 1"> <i class="fa fa-user"></i>&nbsp;Male</span>
                                     <span *ngIf="patient?.gender === 2"> <i class="fa fa-user"></i>&nbsp;Female</span>
                                     
                                 </p>
                                 <br>
-                                <p><b style="color:#fff">Especialists:</b></p>
+                                <p><b style="color:#fff">Providers:</b></p>
                                 <div class="row">
                                     <div class="col-xl-3 col-md-6">
                                         <div class="detail-specialist">
-                                            <div class="foto">
+                                            <!-- <div class="foto">
                                                 <img src="{{patient.rbt_home.avatar}}"  alt="">
 
-                                            </div>
+                                            </div> -->
                                             <div class="infopatient">
                                                 <h5 class="rol">RBT</h5>
                                                 <p class="nombre">{{patient?.rbt_home?.name}} {{patient?.rbt_home?.surname}}</p>
@@ -94,10 +95,10 @@
                                     </div>
                                     <div class="col-xl-3 col-md-6">
                                         <div class="detail-specialist">
-                                            <div class="foto">
+                                            <!-- <div class="foto">
 
                                                 <img src="{{patient.rbt2_school.avatar}}" alt="">
-                                            </div>
+                                            </div> -->
                                             
                                             <div class="infopatient">
                                                 <h5>RBT 2 </h5>
@@ -108,10 +109,10 @@
                                     </div>
                                     <div class="col-xl-3 col-md-6">
                                         <div class="detail-specialist">
-                                            <div class="foto">
+                                            <!-- <div class="foto">
                                                 <img src="{{patient.bcba_home.avatar}}" alt="">
                                             </div>
-                                            
+                                             -->
                                             <div class="infopatient">
                                                 <h5>BCBA </h5>
                                             <p>{{patient?.bcba_home?.name}} {{patient?.bcba_home?.surname}}</p>
@@ -122,9 +123,9 @@
                                     </div>
                                     <div class="col-xl-3 col-md-6">
                                         <div class="detail-specialist">
-                                            <div class="foto">
+                                            <!-- <div class="foto">
                                             <img src="{{patient.bcba2_school.avatar}}" alt="">
-                                            </div>
+                                            </div> -->
                                             
                                             <div class="infopatient">
                                                 <h5>BCBA 2</h5>
@@ -135,9 +136,9 @@
                                     </div>
                                     <div class="col-xl-3 col-md-6">
                                         <div class="detail-specialist">
-                                            <div class="foto">
+                                            <!-- <div class="foto">
                                                 <img src="{{patient.clin_director.avatar}}" alt="">
-                                                </div>
+                                                </div> -->
                                                 
                                                 <div class="infopatient">
                                                     <h5>Clinical Director</h5>

@@ -28,38 +28,38 @@ export class UserService {
     return this.http.get(URL, {headers:headers});
   }
 
-  showPatientProfile(user_id:any){
+  showPatientProfile(user_id:number){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let URL = url_servicios+"/patients/profile/"+user_id;
     return this.http.get(URL,{headers:headers});
   }
   // parent 
-  showParentProfile(parent_id:any){
+  showParentProfile(patient_identifier:string){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/parent/show/"+parent_id;
+    let URL = url_servicios+"/parent/show/"+patient_identifier;
     return this.http.get(URL,{headers:headers});
   }
 
-  showParentPatientProfile(parent_id:any, patient_id:any){
+  showParentPatientProfile(parent_id:number, patient_identifier:string){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/parent/show-withpatient/"+parent_id+'/'+patient_id;
+    let URL = url_servicios+"/parent/show-withpatient/"+parent_id+'/'+patient_identifier;
     return this.http.get(URL,{headers:headers});
   }
 
-  editParient(data:any, parent_id:any){
+  editParient(data:any, parent_id:number){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
     let URL = url_servicios+"/parent/update/"+parent_id;
     return this.http.post(URL,data,{headers:headers});
   }
 
-  showNoteRbtRecent(parent_id:any, patient_id:any){
+  showNoteRbtRecent(parent_id:number, patient_identifier:string){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/parent/show-withpatient-rbtnote-recent/"+parent_id+'/'+patient_id;
+    let URL = url_servicios+"/parent/show-withpatient-rbtnote-recent/"+parent_id+'/'+patient_identifier;
     return this.http.get(URL,{headers:headers});
   }
-  showNoteBCBARecent(parent_id:any, patient_id:any){
+  showNoteBCBARecent(parent_id:number, patient_identifier:string){
     let headers = new HttpHeaders({'Authorization': 'Bearer'+this.authService.token});
-    let URL = url_servicios+"/parent/show-withpatient-bcbanote-recent/"+parent_id+'/'+patient_id;
+    let URL = url_servicios+"/parent/show-withpatient-bcbanote-recent/"+parent_id+'/'+patient_identifier;
     return this.http.get(URL,{headers:headers});
   }
   

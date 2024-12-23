@@ -4,12 +4,12 @@ import { environment } from "src/environments/environment";
 export class User {
 
     id!: number;
-    // role_id: number = 3; // 3 = Rol miembro
     username: string = "";
     email: string = "";
     password?: string = "";
     first_name: string = "";
     last_name: string = "";
+    patient_identifier: string = "";
     token: string = "";
     is_active: number = 0;
     created_at: string = "";

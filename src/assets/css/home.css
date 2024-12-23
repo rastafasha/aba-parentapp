@@ -118,13 +118,18 @@
 .div-farmacia-activa {
     
     position: absolute;
-    width: 97vw;
+    /* width: 97vw;
     height: 210%;
-    transform: translate(-127px, -130px);
+    transform: translate(-127px, -130px); */
+
+    width: 98vw;
+    height: 87vh;
+    transform: translate(-147px, -165px);
     overflow: hidden;
     z-index: 1;
     transition: all .3s ease;
     box-shadow: 0 8px 10px 0 rgba(11, 11, 11, 0.37);
+    
 }
 
 .div-farmacia .fotoPatient img {

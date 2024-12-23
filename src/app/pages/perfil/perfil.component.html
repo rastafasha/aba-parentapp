@@ -19,12 +19,12 @@
                         <h3>Name: {{parent.name}}</h3>
                         <div class="infcita">
                             <p class="esp"><b>Patient Id</b><br>
-                                {{parent.patient_id}}</p>
+                                {{parent.patient_identifier}}</p>
                             <p class="fech"><b>Phone</b><br>
                                 {{parent.phone}}</p>
                             <p class="monto">
                                 <b>Nacimiento:</b> <br>
-                                {{parent.birth_date|date}}
+                                {{parent.birth_date|date :'shortdate'}}
                             </p>
                             <p class="pagado">
                                 <b>Email:</b> <br>

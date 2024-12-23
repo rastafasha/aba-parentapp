@@ -93,6 +93,13 @@ h4 {
     height: 0;
 }
 
+.ocultar{
+    display: none;
+}
+.mostrar{
+    display:block
+}
+
 b {
     color: var(--black);
 }
@@ -109,6 +116,16 @@ textarea {
     background-repeat: no-repeat;
     background-size: contain;
     width: 70px;
+}
+
+.logo-standar {
+    /* background-image: url(../images/logomalcolm.png); */
+    background-image: url(../webp/aba-logo-new.webp);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 50px;
+    height: 60px;
 }
 
 .shadow {

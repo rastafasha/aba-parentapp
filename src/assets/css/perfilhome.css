@@ -183,7 +183,7 @@
     left: 10px;
     z-index: 9;
     width: 96%;
-    height: 200px;
+    height: auto;
     overflow: hidden;
     overflow-y: scroll;
     /* color: #fff; */
@@ -223,5 +223,9 @@
     border-radius: 100%;
     border: 3px solid #fff;
 
+}
+
+.texto-inicial-oculto{
+    display: none;
 }
 

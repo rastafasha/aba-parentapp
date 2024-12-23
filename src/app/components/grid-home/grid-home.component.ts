@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { of, delay } from 'rxjs';
+import { User } from 'src/app/models/user';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ConfigService } from 'src/app/services/config.service';
@@ -24,9 +25,10 @@ export class GridHomeComponent implements OnInit {
   notesRbt:any ;
   notesBCBA:any ;
 
-  recetas:any;
-  settting:any;
-  parent:any;
+  settting:any = [];
+  parent:User;
+  name:User;
+  patient_identifier:string;
 
   imagenSerUrl = environment.url_media;
 
@@ -56,21 +58,23 @@ export class GridHomeComponent implements OnInit {
     this.cargando = true;
     this.userService.showParentProfile(this.usuario.id).subscribe((resp:any)=>{
       this.cargando = false;
-      // console.log(resp);
+      console.log(resp);
       this.parent = resp.parent;
+      this.name = resp.parent.name;
+      this.patient_identifier = this.parent.patient_identifier;
       this.getRbtNoteRecent();
       this.getBcbaNoteRecent();
       this.getInfoPatient();
     })
   }
   getRbtNoteRecent(){
-    this.userService.showNoteRbtRecent(this.parent.id, this.parent.patient_id).subscribe((resp:any)=>{
+    this.userService.showNoteRbtRecent(this.parent.id, this.patient_identifier).subscribe((resp:any)=>{
       // console.log(resp);
       this.notesRbt = resp.notesRbt;
     })
   }
   getBcbaNoteRecent(){
-    this.userService.showNoteBCBARecent(this.parent.id, this.parent.patient_id).subscribe((resp:any)=>{
+    this.userService.showNoteBCBARecent(this.parent.id, this.patient_identifier).subscribe((resp:any)=>{
       // console.log(resp);
       this.notesBCBA = resp.notesBcba;
     })
@@ -78,7 +82,7 @@ export class GridHomeComponent implements OnInit {
 
   getInfoPatient(){
     this.cargando = true;
-    this.userService.showParentPatientProfile(this.parent.id, this.parent.patient_id).subscribe((resp:any)=>{
+    this.userService.showParentPatientProfile(this.parent.id, this.patient_identifier).subscribe((resp:any)=>{
       this.cargando = false;
       this.patient = resp.patient;
     })
@@ -121,16 +125,37 @@ export class GridHomeComponent implements OnInit {
         }
     }
     
-     openBlue(){
+  //    openBlue(){
         
-        var modalcart = document.getElementsByClassName("div-farmacia");
-        for (var i = 0; i<modalcart.length; i++) {
-            modalcart[i].classList.toggle("div-farmacia-activa");
-            var modalcart = document.getElementsByClassName("datosmedicinas-oculto");
-             modalcart[i].classList.toggle("datosmedicinas");
+  //       var modalcart = document.getElementsByClassName("div-farmacia");
+  //       var textoinicial = document.getElementsByClassName("mostrar");
+  //       for (var i = 0; i<modalcart.length; i++) {
+  //           modalcart[i].classList.toggle("div-farmacia-activa");
+  //           var modalcart = document.getElementsByClassName("datosmedicinas-oculto");
+  //            modalcart[i].classList.toggle("datosmedicinas");
 
-      }
-  }
+  //            textoinicial[i].classList.add("ocultar");
+  //            textoinicial[i].classList.remove("mostrar");
+
+  //     }
+  // }
+
+  openBlue() {
+    var modalcart = document.getElementsByClassName("div-farmacia");
+    var textoinicial = document.getElementsByClassName("texto-inicial");
+    
+    for (var i = 0; i < modalcart.length; i++) {
+        // Alternar la clase para el modal
+        modalcart[i].classList.toggle("div-farmacia-activa");
+        textoinicial[i].classList.toggle("texto-inicial-oculto");
+        
+        // Alternar la clase para los datos de medicinas
+        var modalcartDatos = document.getElementsByClassName("datosmedicinas-oculto");
+        modalcartDatos[i].classList.toggle("datosmedicinas");
+
+        
+    }
+}
 
    
 

@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { AgendarCitaComponent } from './agendar-cita/agendar-cita.component';
 import { ListaComponent } from './lista/lista.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { AddAppointmentsComponent } from './agendar-cita/add-appointments/add-appointments.component';
 import { DetallecitaComponent } from './detallecita/detallecita.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
-import { PagarComponent } from './pagos/pagar/pagar.component';
-import { MisPagosComponent } from './pagos/mis-pagos/mis-pagos.component';
 import { AyudaComponent } from './ayuda/ayuda.component';
 import { LegalComponent } from './legal/legal.component';
 
@@ -19,29 +15,23 @@ const childRoutes: Routes = [
 
     { path: '',  component: HomeComponent, data:{title:'app'} },
 
-    {
-    path:'lista', component:ListaComponent
-    },
+    // {
+    // path:'lista', component:ListaComponent
+    // },
     {
       path:'perfil', component:PerfilComponent
-    },
-    {
-      path:'agendar-cita', component:AddAppointmentsComponent
     },
     {
       path:'perfil-doctor/:id', component:DoctorProfileComponent
     },
     {
-      path:'agendar-cita/:id', component:AgendarCitaComponent
-    },
-    {
       path:'detalle-cita/:id', component:DetallecitaComponent
     },
     {
-      path:'pagar/:id', component:PagarComponent
+      path:'lista', component:AyudaComponent
     },
     {
-      path:'mis-pagos', component:MisPagosComponent
+      path:'bip', component:AyudaComponent
     },
     {
       path:'ayuda', component:AyudaComponent
