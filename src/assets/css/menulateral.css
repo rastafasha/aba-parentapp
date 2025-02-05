@@ -1,22 +1,23 @@
 .menu {
     display: none;
+    & ul {
+        display: flex;
+    }
+    
+    & a {
+        font-size: 1rem;
+        color: white;
+        padding: 12px;
+        display: block;
+        text-transform: uppercase;
+    }
+    
+    & a:hover {
+        color: deepskyblue;
+    }
 }
 
-.menu ul {
-    display: flex;
-}
 
-.menu a {
-    font-size: 1rem;
-    color: white;
-    padding: 12px;
-    display: block;
-    text-transform: uppercase;
-}
-
-.menu a:hover {
-    color: deepskyblue;
-}
 
 .sidemenu-toggler {
     position: relative;
@@ -24,30 +25,32 @@
     padding: 6px;
     top: -6px;
     right: 0;
-}
-
-.sidemenu-toggler>span {
-    display: block;
-    background-color: var(--black);
-    height: 2px;
-}
-
-.sidemenu-toggler>span:nth-child(2) {
-    margin: 4px 0 4px auto;
-    width: 75%;
-    transition: 0.3s all;
-}
-
-.sidemenu-toggler>span:nth-child(3) {
-    margin-left: auto;
-    width: 50%;
-    transition: 0.6s all;
-}
-
-.sidemenu-toggler:hover>span:nth-child(2),
-.sidemenu-toggler:hover>span:nth-child(3) {
+    &>span {
+        display: block;
+        background-color: var(--black);
+        height: 2px;
+    }
+    
+    &>span:nth-child(2) {
+        margin: 4px 0 4px auto;
+        width: 75%;
+        transition: 0.3s all;
+    }
+    
+    &>span:nth-child(3) {
+        margin-left: auto;
+        width: 50%;
+        transition: 0.6s all;
+    }
+    &:hover>span:nth-child(2),
+    &:hover>span:nth-child(3) {
     width: 100%;
 }
+
+}
+
+
+
 
 .sidemenu {
     position: fixed;
@@ -68,6 +71,103 @@
     transition: transform 0.5 ease-in-out;
     overflow: hidden;
     overflow-y: scroll;
+
+
+    &.active {
+        transform: translate3d(0, 0, 0);
+        transition: 0.3s all;
+    }
+    &.inactive {
+        transform: translate3d(0, 0, 0);
+        transition: 0.3s all;
+    }
+
+    & .close {
+        height: 30px;
+        width: 30px;
+        display: block;
+        position: absolute;
+        right: 40px;
+        top: 24px;
+        transition: 0.3s all;
+    }
+
+    & .close::before,
+    & .close::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 13px;
+        height: 28px;
+        width: 2px;
+        background: black;
+    }
+
+    & .close::before {
+        transform: rotate(45deg);
+    }
+
+    & .close.close::after {
+        transform: rotate(-45deg);
+    }
+
+    & nav ul {
+        padding-top: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start !important;
+        &  li {
+            transform: translate3d(100%, 0, 0);
+            transition: transform 0.5 ease-in-out;
+            animation-delay: 1s;
+        }
+    }
+
+    
+
+    &.active nav ul li {
+        transform: translate3d(0px, 0, 0);
+        transition: 0.3s all;
+        animation-delay: 1s;
+        height: 40px;
+    }
+
+    & nav ul li a {
+        font-size: var(--fontsizeboton);
+        color: var(--white);
+        text-transform: capitalize;
+    }
+
+    & nav a,
+    & nav a:hover {
+        text-decoration: none;
+        color: var(--white);
+    }
+
+    & nav a::after {
+        content: '';
+        height: 2px;
+        width: 0%;
+        margin-top: 5px;
+        display: block;
+        background-color: var(--white);
+        transition: all .3s ease;
+    }
+
+    & nav a:hover::after {
+        content: '';
+        height: 2px;
+        width: 100%;
+        margin-top: 5px;
+        display: block;
+        background-color: var(--white);
+    }
+
+    & footer {
+        display: flex;
+        align-items: center;
+        margin-bottom: 12px;
+    }
 }
 
 .header.sidemenu,
@@ -77,100 +177,6 @@
     box-shadow: 0 8px 32px 0 rgba(11, 11, 11, 0.37);
 }
 
-.sidemenu.active {
-    transform: translate3d(0, 0, 0);
-    transition: 0.3s all;
-}
-.sidemenu.inactive {
-    transform: translate3d(0, 0, 0);
-    transition: 0.3s all;
-}
-
-.sidemenu .close {
-    height: 30px;
-    width: 30px;
-    display: block;
-    position: absolute;
-    right: 40px;
-    top: 24px;
-    transition: 0.3s all;
-}
-
-.sidemenu .close::before,
-.sidemenu .close::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 13px;
-    height: 28px;
-    width: 2px;
-    background: black;
-}
-
-.sidemenu .close::before {
-    transform: rotate(45deg);
-}
-
-.sidemenu .close.close::after {
-    transform: rotate(-45deg);
-}
-
-.sidemenu nav ul {
-    padding-top: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start !important;
-}
-
-.sidemenu nav ul li {
-    transform: translate3d(100%, 0, 0);
-    transition: transform 0.5 ease-in-out;
-    animation-delay: 1s;
-}
-
-.sidemenu.active nav ul li {
-    transform: translate3d(0px, 0, 0);
-    transition: 0.3s all;
-    animation-delay: 1s;
-    height: 40px;
-}
-
-.sidemenu nav ul li a {
-    font-size: var(--fontsizeboton);
-    color: var(--white);
-    text-transform: capitalize;
-}
-
-.sidemenu nav a,
-.sidemenu nav a:hover {
-    text-decoration: none;
-    color: var(--white);
-}
-
-.sidemenu nav a::after {
-    content: '';
-    height: 2px;
-    width: 0%;
-    margin-top: 5px;
-    display: block;
-    background-color: var(--white);
-    transition: all .3s ease;
-}
-
-.sidemenu nav a:hover::after {
-    content: '';
-    height: 2px;
-    width: 100%;
-    margin-top: 5px;
-    display: block;
-    background-color: var(--white);
-}
-
-.sidemenu footer {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-}
 
 @media(max-width:768px) {
     .sidemenu {

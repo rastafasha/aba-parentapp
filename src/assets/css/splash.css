@@ -13,22 +13,21 @@
     height: auto;
     border-radius: 100px;
     background-color: var(--amarillo-fondo);
+    & img {
+        display: flex;
+        width: 75%;
+        margin: 0 auto;
+    }
 }
 
-.logo_circulo_splash img {
-    display: flex;
-    width: 75%;
-    margin: 0 auto;
-}
 
 .tipo_splash {
     display: flex;
     width: 100px;
-}
-
-.tipo_splash img {
-    display: flex;
-    width: 100%;
-    margin: 0 auto;
-    margin-top: 10px;
+    & img {
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
 }

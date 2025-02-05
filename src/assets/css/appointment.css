@@ -14,31 +14,25 @@
     width: 100vw;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-.tab-content-set .nav li{
-    padding: 0px 10px;
-}
-
-/* .tab-content-set ul li a {
-    color: var(--black);
-}
-.darkmode .tab-content-set ul li a {
-    color: var(--blanco);
-} */
+        & .nav li{
+            padding: 0px 10px;
+        }
 
 
-.tab-content-set .active{
-    color: var(--base);
-    border-bottom-width: 80%;
-    text-align: center;
+        & .active{
+        color: var(--base);
+        border-bottom-width: 80%;
+        text-align: center;
+        
+    }
+        & .active::after{
+        content: '';
+        height: 2px;
+        background-color: var(--base);
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
     
-}
-.tab-content-set .active::after{
-    content: '';
-    height: 2px;
-    background-color: var(--base);
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 .notiene{

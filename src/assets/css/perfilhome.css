@@ -15,14 +15,15 @@
 }
 .fotoPerfil  {
     grid-area: 1 / 1 / 1 / 1;
+    & img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+    
+    }
 
 }
-.fotoPerfil img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
 
-}
 .fotoPatient img {
     /* width: 100%; */
     height: auto;
@@ -64,10 +65,11 @@
     text-align: right;
     width: 70%;
     color: #fff;
+    & p b{
+        color: #fff;
+    }
 }
-.addic p b{
-    color: #fff;
-}
+
 
 .datospaciente{
     grid-area: 1 / 2 / 1 / 5;
@@ -132,8 +134,6 @@
     padding: 10px;
     margin-bottom: 20px;
 }
-
-.datosrecipe{}
 
 .infcita{
     display: grid;
@@ -214,14 +214,14 @@
     width: 25vw;
     border-radius: 100%;
     overflow: hidden;
-
-}
-.foto img{
-    width: 100%;
-    display: block;
-    margin: auto;
-    border-radius: 100%;
-    border: 3px solid #fff;
+    & img{
+        width: 100%;
+        display: block;
+        margin: auto;
+        border-radius: 100%;
+        border: 3px solid #fff;
+    
+    }
 
 }
 

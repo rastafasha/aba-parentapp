@@ -13,10 +13,10 @@
     height: auto;
     border-radius: 100px;
     background-color: var(--amarillo-fondo);
-}
 
-.logo_circulo_login img {
-    display: flex;
-    width: 75%;
-    margin: 0 auto;
+    & img {
+        display: flex;
+        width: 75%;
+        margin: 0 auto;
+    }
 }

@@ -33,7 +33,16 @@
     width: 100%;
     height: 100%;
     overflow: hidden;
-    transition: all .3s ease-in
+    transition: all .3s ease-in;
+    & img {
+        position: relative;
+        left: -130px;
+        display: block;
+        /* z-index: 9; */
+        bottom: 0px;
+        transition: all .3s ease;
+        transform: rotateY(0deg);
+    }
 }
 
 .div-restaurant-activo {
@@ -44,27 +53,20 @@
     z-index: 2;
     transition: all .3s ease;
     box-shadow: 0 8px 10px 0 rgba(11, 11, 11, 0.37);
+    & img {
+        position: relative;
+        transform: rotateY(181deg);
+        left: 0%;
+        display: block;
+        /* z-index: 9; */
+        bottom: -40px;
+        transition: all .3s ease;
+    }
+    
 }
 
-.div-restaurant img {
-    position: relative;
-    left: -130px;
-    display: block;
-    /* z-index: 9; */
-    bottom: 0px;
-    transition: all .3s ease;
-    transform: rotateY(0deg);
-}
 
-.div-restaurant-activo img {
-    position: relative;
-    transform: rotateY(181deg);
-    left: 0%;
-    display: block;
-    /* z-index: 9; */
-    bottom: -40px;
-    transition: all .3s ease;
-}
+
 
 
 .div-mercados {
@@ -78,11 +80,19 @@
 
     overflow: hidden;
     transition: all .3s ease;
+    & img {
+        position: relative;
+        display: block;
+        bottom: 0;
+        right: 0;
+        float: right;
+        width: 70%;
+        top: 0px;
+    }
 }
 
 
 .div-mercados-activo {
-   
     position: absolute;
     width: 98vw;
     height: 210%;
@@ -94,16 +104,6 @@
     box-shadow: 0 8px 10px 0 rgba(11, 11, 11, 0.37);
 }
 
-
-.div-mercados img {
-    position: relative;
-    display: block;
-    bottom: 0;
-    right: 0;
-    float: right;
-    width: 70%;
-    top: 0px;
-}
 
 .div-farmacia {
     grid-area: 2 / 2 / 3 / 4;
@@ -165,6 +165,16 @@
     top: 0px;
     overflow: hidden;
     transition: all .3s ease;
+    & img {
+        position: relative;
+        display: block;
+        bottom: 0;
+        right: 0;
+        float: right;
+        width: 170%;
+        top: -20px;
+        transition: all .3s ease;
+    }
 }
 .div-bebida-activa {
     
@@ -179,16 +189,6 @@
     box-shadow: 0 8px 10px 0 rgba(11, 11, 11, 0.37);
 }
 
-.div-bebida img {
-    position: relative;
-    display: block;
-    bottom: 0;
-    right: 0;
-    float: right;
-    width: 170%;
-    top: -20px;
-    transition: all .3s ease;
-}
 
 .div-bebida-activa.div-bebida img {
     
@@ -197,12 +197,13 @@
 
 .parent div {
     padding: 5px;
+    & h5 {
+        font-size: 14px;
+        color: var(--blanco);
+    }
 }
 
-.parent div h5 {
-    font-size: 14px;
-    color: var(--blanco);
-}
+
 
 .overflow {
     overflow: hidden;
@@ -231,36 +232,39 @@
     font-size: 14px;
     color: var(--black);
     padding: 5px;
+
+    & img {
+        position: relative;
+        display: none;
+        bottom: 0;
+        right: 10px;
+        float: right;
+        width: 60%;
+        top: -10px;
+    }
+    & h5 {
+        font-size: 14px;
+        color: var(--black);
+        width: 100%;
+        position: relative;
+        left: 10px;
+        top: -6px;
+    }
+    
+    & a p {
+        font-size: 14px;
+        color: var(--black);
+        text-align: center;
+        display: flex;
+        padding: 0;
+        margin: 0;
+    
+    }
 }
 
-.categoria_home img {
-    position: relative;
-    display: none;
-    bottom: 0;
-    right: 10px;
-    float: right;
-    width: 60%;
-    top: -10px;
-}
 
-.categoria_home h5 {
-    font-size: 14px;
-    color: var(--black);
-    width: 100%;
-    position: relative;
-    left: 10px;
-    top: -6px;
-}
 
-.categoria_home a p {
-    font-size: 14px;
-    color: var(--black);
-    text-align: center;
-    display: flex;
-    padding: 0;
-    margin: 0;
 
-}
 
 .publicidad_home {
     display: flex;
@@ -282,17 +286,19 @@
     font-size: 14px;
     color: var(--black);
     padding-top: 10px;
+    
+    & img {
+        position: relative;
+        display: block;
+        bottom: 0;
+        right: 0;
+        float: right;
+        width: 100%;
+        top: -10px;
+    }
 }
 
-.publicidad_home_item img {
-    position: relative;
-    display: block;
-    bottom: 0;
-    right: 0;
-    float: right;
-    width: 100%;
-    top: -10px;
-}
+
 
 
 /* locales */
@@ -328,14 +334,15 @@
     margin-bottom: 10px;
     margin-left: 10px;
     border-radius: 50%;
+    & img {
+        display: flex;
+        width: 90%;
+        margin: auto;
+        border-radius: 50%;
+    }
+    
 }
 
-.logo_local img {
-    display: flex;
-    width: 90%;
-    margin: auto;
-    border-radius: 50%;
-}
 
 .local_categoria_item {
     background-image: url('../images/coro/coro02.jpg');
@@ -344,57 +351,60 @@
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .11), 0 1px 10px 0 rgba(0, 0, 0, .08);
+    & .contenido {
+        display: flex;
+        width: 100%;
+        height: 100px;
+        background-color: #fff;
+        justify-content: space-between;
+        flex-direction: row;
+        padding: 10px;
+    }
 }
 
-.local_categoria_item .contenido {
-    display: flex;
-    width: 100%;
-    height: 100px;
-    background-color: #fff;
-    justify-content: space-between;
-    flex-direction: row;
-    padding: 10px;
-}
+
 
 .info_local {
     padding: 5px;
     display: flex;
     flex-direction: column;
+
+    & h3 {
+        font-size: 16px;
+        font-family: var(--font-bold);
+    }
+
+    & h3,
+    & p {
+        margin: 0;
+        padding: 0;
+        color: var(--black);
+    }
+
+    & p.tiempo {
+        display: flex;
+        float: left;
+        margin-right: 5px;
+        flex-direction: row;
+    }
+
+    & p.envio {
+        display: flex;
+        flex-direction: row;
+    }
 }
 
-.info_local h3 {
-    font-size: 16px;
-    font-family: var(--font-bold);
-}
-
-.info_local h3,
-.info_local p {
-    margin: 0;
-    padding: 0;
-    color: var(--black);
-}
-
-.info_local p.tiempo {
-    display: flex;
-    float: left;
-    margin-right: 5px;
-    flex-direction: row;
-}
-
-.info_local p.envio {
-    display: flex;
-    flex-direction: row;
-}
 
 .calificacion {
     display: flex;
     align-items: baseline;
     flex-direction: row;
+    & i {
+        color: var(--dorado);
+    }
 }
 
-.calificacion i {
-    color: var(--dorado);
-}
+
 
 
 /* mercados */
